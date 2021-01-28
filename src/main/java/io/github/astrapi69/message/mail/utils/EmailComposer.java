@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -10,10 +10,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *  *
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *  *
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -24,18 +24,18 @@
  */
 package io.github.astrapi69.message.mail.utils;
 
-import de.alpharogroup.resourcebundle.locale.Locales;
-import io.github.astrapi69.message.mail.viewmodel.InfoMessage;
-import io.github.astrapi69.message.mail.viewmodel.MessageContent;
-import lombok.extern.java.Log;
-import org.apache.velocity.runtime.parser.ParseException;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Level;
+
+import org.apache.velocity.runtime.parser.ParseException;
+
+import io.github.astrapi69.message.mail.viewmodel.InfoMessage;
+import io.github.astrapi69.message.mail.viewmodel.MessageContent;
+import lombok.extern.java.Log;
 
 /**
  * The Class MessageComposer.
@@ -137,11 +137,10 @@ public class EmailComposer
 		return infoMessageModel;
 	}
 
-	public static InfoMessage createEmailMessageForRecommendProfile(
-		String applicationSenderAddress, final String applicationDomainName, String memberUsername,
-		String recipientFullName, final String recipientEmailContact, final String profileData,
-		final String profileLink, String invitationText, final String senderProfileLink,
-		String signupLink, Locale locale)
+	public static InfoMessage createEmailMessageForRecommendProfile(String applicationSenderAddress,
+		final String applicationDomainName, String memberUsername, String recipientFullName,
+		final String recipientEmailContact, final String profileData, final String profileLink,
+		String invitationText, final String senderProfileLink, String signupLink, Locale locale)
 	{
 		// TODO set paths and filename and context...
 		String xmlMailTemplatePath = "mail/templates/recommend/profile/";
@@ -176,49 +175,6 @@ public class EmailComposer
 		infoMessageModel.setRecipientEmailContact(recipientEmailContact);
 		infoMessageModel.setRecipientFullName(recipientFullName);
 		return infoMessageModel;
-	}
-
-	/**
-	 * The main method.
-	 *
-	 * @param strings
-	 *            the arguments
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 * @throws ParseException
-	 *             the parse exception
-	 * @throws URISyntaxException
-	 *             the URI syntax exception
-	 */
-	public static final void main(String... strings)
-		throws IOException, ParseException, URISyntaxException
-	{
-		InfoMessage model = EmailComposer.createEmailMessageForForgottenPassword("xy@z.com",
-			"z.com", "abc", "Albert Einstein", "a.e@gmail.com", "yyy",
-			"http://www.xy.com/bla=fasel", Locales.GREEK);
-		System.out.println(model.getMessageContentModel().getSubject());
-		Map<String, Object> context = new HashMap<>();
-		context.put("recipientFullName", "Albert Einstein");
-		context.put("urlForForgottenPassword", "http://www.xy.com/bla=fasel");
-		context.put("username", "albert");
-		context.put("newPassword", "xxx");
-		context.put("applicationDomainName", "z.com");
-		MessageContent messageModel = MessageComposer.createMessageModel(context,
-			"mail/templates/forgotten/pw/ForgottenPassword", null);
-		System.out.println("Subject:\n" + messageModel.getSubject());
-		System.out.println("Content:\n" + messageModel.getContent());
-		messageModel = MessageComposer.createMessageModel(context,
-			"mail/templates/forgotten/pw/ForgottenPassword", Locales.GREEK);
-		System.out.println("Subject:\n" + messageModel.getSubject());
-		System.out.println("Content:\n" + messageModel.getContent());
-		messageModel = MessageComposer.createMessageModel(context,
-			"mail/templates/forgotten/pw/ForgottenPassword", Locale.GERMAN);
-		System.out.println("Subject:\n" + messageModel.getSubject());
-		System.out.println("Content:\n" + messageModel.getContent());
-		messageModel = MessageComposer.createMessageModel(context,
-			"mail/templates/forgotten/pw/ForgottenPassword", Locale.ENGLISH);
-		System.out.println("Subject:\n" + messageModel.getSubject());
-		System.out.println("Content:\n" + messageModel.getContent());
 	}
 
 }
