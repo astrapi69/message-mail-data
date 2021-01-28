@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.message.mail.data.models.utils;
+package io.github.astrapi69.message.mail.utils;
 
 import de.alpharogroup.file.read.ReadFileExtensions;
 import de.alpharogroup.lang.ClassExtensions;
@@ -89,21 +89,19 @@ public class MessageComposer
 	}
 
 	/**
-	 * Gets the email template as a Message Model that contains the velocity templates.
+	 * Gets the email template as a BaseMessage Model that contains the velocity templates.
 	 *
 	 * @param name
 	 *            The resource name that represents an IMessageModel as an xml file.
 	 * @return the email template
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
-	 * @throws URISyntaxException
-	 *             the URI syntax exception
 	 */
 	public static MessageContent getEmailTemplate(String name)
-		throws IOException, URISyntaxException
+		throws IOException
 	{
 		InputStream is = ClassExtensions.getResourceAsStream(name);
-		Map<String, Class<?>> aliases = new HashMap<String, Class<?>>();
+		Map<String, Class<?>> aliases = new HashMap<>();
 		aliases.put("message", MessageContent.class);
 		String xmlString = ReadFileExtensions.inputStream2String(is);
 		MessageContent messageContent = XmlToObjectExtensions.toObjectWithXStream(xmlString, aliases);

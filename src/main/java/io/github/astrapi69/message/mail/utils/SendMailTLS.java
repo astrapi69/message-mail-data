@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.message.mail.data.models.utils;
+package io.github.astrapi69.message.mail.utils;
 
 import de.alpharogroup.crypto.chainable.ChainableStringDecryptor;
 import de.alpharogroup.crypto.chainable.ChainableStringEncryptor;
@@ -37,6 +37,7 @@ import de.alpharogroup.file.read.ReadFileExtensions;
 import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.file.write.WriteFileExtensions;
 import de.alpharogroup.lang.ClassExtensions;
+import io.github.astrapi69.message.mail.utils.EmailSendProperties;
 
 import javax.mail.MessagingException;
 import java.io.InputStream;
@@ -82,7 +83,7 @@ public class SendMailTLS
 			encryptor.encrypt(pw), "UTF-8");
 	}
 
-	public static void main(String[] args) throws Exception, MessagingException
+	public static void main(String[] args) throws Exception
 	{
 
 		final String username = "error.flirteros@gmail.com";

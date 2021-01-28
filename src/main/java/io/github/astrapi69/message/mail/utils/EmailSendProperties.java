@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.message.mail.data.models.utils;
+package io.github.astrapi69.message.mail.utils;
 
 import de.alpharogroup.email.send.SendEmail;
 import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
@@ -52,7 +52,6 @@ public final class EmailSendProperties
 	}
 
 	public static SendEmail getGmailSender(final String username, final String password)
-		throws IOException, MessagingException
 	{
 		Properties properties = EmailSendProperties.getGmailProperties();
 

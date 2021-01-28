@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.message.mail.data.models.utils;
+package io.github.astrapi69.message.mail.utils;
 
 import de.alpharogroup.resourcebundle.locale.Locales;
 import io.github.astrapi69.message.mail.viewmodel.InfoMessage;
@@ -51,7 +51,7 @@ public class EmailComposer
 		String xmlMailTemplatePath = "mail/templates/response/sent/";
 		String xmlMailTemplateFileName = "MemberSendResponse";
 		String xmlMailTemplateName = xmlMailTemplatePath + xmlMailTemplateFileName;
-		Map<String, Object> context = new HashMap<String, Object>();
+		Map<String, Object> context = new HashMap<>();
 		context.put("recipientFullName", recipientFullName);
 		context.put("memberUsername", username);
 		context.put("messagePart", messagePart);
@@ -61,15 +61,11 @@ public class EmailComposer
 		{
 			messageModel = MessageComposer.createMessageModel(context, xmlMailTemplateName, locale);
 		}
-		catch (IOException e)
-		{
-			log.log(Level.SEVERE, "Xml file could not be found.", e);
-		}
 		catch (ParseException e)
 		{
 			log.log(Level.SEVERE, "Template could not be parsed.", e);
 		}
-		catch (URISyntaxException e)
+		catch (IOException | URISyntaxException e)
 		{
 			log.log(Level.SEVERE, "Xml file could not be found.", e);
 		}
@@ -112,7 +108,7 @@ public class EmailComposer
 		String xmlMailTemplatePath = "mail/templates/forgotten/pw/";
 		String xmlMailTemplateFileName = "ForgottenPassword";
 		String xmlMailTemplateName = xmlMailTemplatePath + xmlMailTemplateFileName;
-		Map<String, Object> context = new HashMap<String, Object>();
+		Map<String, Object> context = new HashMap<>();
 		context.put("recipientFullName", recipientFullName);
 		context.put("urlForForgottenPassword", urlForForgottenPassword);
 		context.put("username", username);
@@ -123,15 +119,11 @@ public class EmailComposer
 		{
 			messageModel = MessageComposer.createMessageModel(context, xmlMailTemplateName, locale);
 		}
-		catch (IOException e)
-		{
-			log.log(Level.SEVERE, "Xml file could not be found.", e);
-		}
 		catch (ParseException e)
 		{
 			log.log(Level.SEVERE, "Template could not be parsed.", e);
 		}
-		catch (URISyntaxException e)
+		catch (IOException | URISyntaxException e)
 		{
 			log.log(Level.SEVERE, "Xml file could not be found.", e);
 		}
@@ -155,7 +147,7 @@ public class EmailComposer
 		String xmlMailTemplatePath = "mail/templates/recommend/profile/";
 		String xmlMailTemplateFileName = "MemberSendRecommendation";
 		String xmlMailTemplateName = xmlMailTemplatePath + xmlMailTemplateFileName;
-		Map<String, Object> context = new HashMap<String, Object>();
+		Map<String, Object> context = new HashMap<>();
 		context.put("memberUsername", memberUsername);
 		context.put("profileData", profileData);
 		context.put("profileLink", profileLink);
@@ -168,15 +160,11 @@ public class EmailComposer
 		{
 			messageModel = MessageComposer.createMessageModel(context, xmlMailTemplateName, locale);
 		}
-		catch (IOException e)
-		{
-			log.log(Level.SEVERE, "Xml file could not be found.", e);
-		}
 		catch (ParseException e)
 		{
 			log.log(Level.SEVERE, "Template could not be parsed.", e);
 		}
-		catch (URISyntaxException e)
+		catch (IOException | URISyntaxException e)
 		{
 			log.log(Level.SEVERE, "Xml file could not be found.", e);
 		}
@@ -209,7 +197,7 @@ public class EmailComposer
 			"z.com", "abc", "Albert Einstein", "a.e@gmail.com", "yyy",
 			"http://www.xy.com/bla=fasel", Locales.GREEK);
 		System.out.println(model.getMessageContentModel().getSubject());
-		Map<String, Object> context = new HashMap<String, Object>();
+		Map<String, Object> context = new HashMap<>();
 		context.put("recipientFullName", "Albert Einstein");
 		context.put("urlForForgottenPassword", "http://www.xy.com/bla=fasel");
 		context.put("username", "albert");

@@ -189,6 +189,8 @@ dependencies {
     implementation("de.alpharogroup:velocity-extensions:$velocityExtensionsVersion")
     implementation("io.github.astrapi69:file-worker:$fileWorkerVersion")
     implementation("de.alpharogroup:jobj-core:$jobjCoreVersion")
+    implementation("de.alpharogroup:email-tails:$emailTailsVersion")
+    implementation("de.alpharogroup:mystic-crypt:$mysticCryptVersion")
     implementation("de.alpharogroup:xml-extensions:$xmlExtensionsVersion")
     implementation("de.alpharogroup:resourcebundle-core:$resourcebundleCoreVersion")
     testCompileOnly("org.projectlombok:lombok:$lombokVersion")
