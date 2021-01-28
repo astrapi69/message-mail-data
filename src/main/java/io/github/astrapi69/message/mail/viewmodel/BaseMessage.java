@@ -3,6 +3,7 @@ package io.github.astrapi69.message.mail.viewmodel;
 import io.github.astrapi69.message.mail.enums.MessageState;
 import io.github.astrapi69.message.mail.enums.MessageType;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,6 +15,7 @@ import lombok.experimental.SuperBuilder;
 @Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
 @FieldDefaults(level = AccessLevel.PRIVATE)
