@@ -3,7 +3,7 @@
 <div align="center">
 
 [![Build Status](https://travis-ci.com/astrapi69/message-mail-data.svg?branch=master)](https://travis-ci.com/astrapi69/message-mail-data)
-[![Coverage Status](https://coveralls.io/repos/github/astrapi69/message-mail-data/badge.svg?branch=develop)](https://coveralls.io/github/astrapi69/message-mail-data?branch=develop)
+[![Coverage Status](https://codecov.io/gh/astrapi69/message-mail-data/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/message-mail-data)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/message-mail-data.svg?style=flat)](https://github.com/astrapi69/message-mail-data/issues)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/message-mail-data/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/message-mail-data)
 [![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/message-mail-data.svg)](http://www.javadoc.io/doc/io.github.astrapi69/message-mail-data)
