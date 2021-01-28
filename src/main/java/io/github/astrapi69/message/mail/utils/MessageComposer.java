@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2015 Asterios Raptis
+ * Copyright (C) 2021 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -10,10 +10,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *  *
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *  *
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -24,16 +24,6 @@
  */
 package io.github.astrapi69.message.mail.utils;
 
-import de.alpharogroup.file.read.ReadFileExtensions;
-import de.alpharogroup.lang.ClassExtensions;
-import de.alpharogroup.resourcebundle.locale.LocaleExtensions;
-import de.alpharogroup.velocity.VelocityExtensions;
-import de.alpharogroup.xml.XmlToObjectExtensions;
-import io.github.astrapi69.message.mail.viewmodel.MessageContent;
-import org.apache.velocity.Template;
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.runtime.parser.ParseException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -41,6 +31,17 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.runtime.parser.ParseException;
+
+import de.alpharogroup.file.read.ReadFileExtensions;
+import de.alpharogroup.lang.ClassExtensions;
+import de.alpharogroup.resourcebundle.locale.LocaleExtensions;
+import de.alpharogroup.velocity.VelocityExtensions;
+import de.alpharogroup.xml.XmlToObjectExtensions;
+import io.github.astrapi69.message.mail.viewmodel.MessageContent;
 
 /**
  * The Class MessageComposer.
@@ -97,14 +98,14 @@ public class MessageComposer
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public static MessageContent getEmailTemplate(String name)
-		throws IOException
+	public static MessageContent getEmailTemplate(String name) throws IOException
 	{
 		InputStream is = ClassExtensions.getResourceAsStream(name);
 		Map<String, Class<?>> aliases = new HashMap<>();
 		aliases.put("message", MessageContent.class);
 		String xmlString = ReadFileExtensions.inputStream2String(is);
-		MessageContent messageContent = XmlToObjectExtensions.toObjectWithXStream(xmlString, aliases);
+		MessageContent messageContent = XmlToObjectExtensions.toObjectWithXStream(xmlString,
+			aliases);
 		return messageContent;
 	}
 
