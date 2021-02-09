@@ -24,6 +24,7 @@
  */
 package io.github.astrapi69.message.mail.utils;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -40,7 +41,7 @@ import de.alpharogroup.lang.ClassExtensions;
 public class SendMailTLS
 {
 
-	private static String decryptPassword() throws Exception
+	protected static String decryptPassword() throws Exception
 	{
 		Properties prop = EmailSendProperties.getEmailSendProperties();
 		String firstKey = prop.getProperty("post.send.first.key");
@@ -71,10 +72,12 @@ public class SendMailTLS
 		final HexableEncryptor thirdEncryptor = new HexableEncryptor(thirdKey);
 		final ChainableStringEncryptor encryptor = new ChainableStringEncryptor(firstEncryptor,
 			secondEncryptor, thirdEncryptor);
-
+		String encryptedPassword = encryptor.encrypt(pw);
+		File file = PathFinder
+			.getRelativePath(PathFinder.getSrcTestResourcesDir(), filename);
 		WriteFileExtensions.writeStringToFile(
-			PathFinder.getRelativePath(PathFinder.getSrcMainResourcesDir(), "gmail.pw"),
-			encryptor.encrypt(pw), "UTF-8");
+			file,
+			encryptedPassword, "UTF-8");
 	}
 
 }
