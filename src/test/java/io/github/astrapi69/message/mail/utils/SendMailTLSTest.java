@@ -4,18 +4,19 @@ import de.alpharogroup.email.messages.EmailConstants;
 import de.alpharogroup.email.messages.EmailMessage;
 import de.alpharogroup.email.send.SendEmail;
 import de.alpharogroup.email.utils.EmailExtensions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class SendMailTLSTest
 {
-	@Test void testEncryptPassword()throws Exception
+	@Test @Disabled void testEncryptPassword()throws Exception
 	{
 		String password;
 		password = "very-secret";
 		SendMailTLS.encryptPassword(password, "gmail.pw");
 	}
 
-	@Test void testDecryptPassword() throws Exception
+	@Test @Disabled void testDecryptPassword() throws Exception
 	{
 		final String username = "error.flirteros@gmail.com";
 		String password;
