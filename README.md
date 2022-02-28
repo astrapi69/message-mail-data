@@ -28,6 +28,58 @@ This project holds pojo classes for messages and email messages
 No animals were harmed in the making of this library.
 
 
+## Maven dependency
+
+Maven dependency is now on sonatype. Check
+out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~message-mail-data~~~)
+for latest snapshots and releases.
+
+Add the following maven dependency to your project `pom.xml` if you want to import the core
+functionality of message-mail-data:
+
+Than you can add the dependency to your dependencies:
+
+    <properties>
+            ...
+        <!-- message-mail-data version -->
+        <message-mail-data.version>1.1</message-mail-data.version>
+            ...
+    </properties>
+            ...
+        <dependencies>
+            ...
+            <!-- message-mail-data DEPENDENCY -->
+            <dependency>
+                <groupId>io.github.astrapi69</groupId>
+                <artifactId>message-mail-data</artifactId>
+                <version>${message-mail-data.version}</version>
+            </dependency>
+            ...
+        </dependencies>
+
+## gradle dependency
+
+You can first define the version in the ext section and add than the following gradle dependency to
+your project `build.gradle` if you want to import the core functionality of message-mail-data:
+
+define version in file gradle.properties
+
+```
+messageMailDataVersion=1.1
+```
+
+or in build.gradle ext area
+
+```
+    messageMailDataVersion = "1.1"
+```
+
+and than add the dependency to the dependencies area
+
+```
+    implementation("io.github.astrapi69:message-mail-data:$messageMailDataVersion")
+```
+
 # Donations
 
 This project is kept as an open source product and relies on contributions to remain being
@@ -96,66 +148,6 @@ or over flattr:
 
 The source code comes under the liberal MIT License, making message-mail-data great for all types of
 applications.
-
-## Maven dependency
-
-Maven dependency is now on sonatype. Check
-out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~message-mail-data~~~)
-for latest snapshots and releases.
-
-Add the following maven dependency to your project `pom.xml` if you want to import the core
-functionality of message-mail-data:
-
-Than you can add the dependency to your dependencies:
-
-    <properties>
-            ...
-        <!-- message-mail-data version -->
-        <message-mail-data.version>1</message-mail-data.version>
-            ...
-    </properties>
-            ...
-        <dependencies>
-            ...
-            <!-- message-mail-data DEPENDENCY -->
-            <dependency>
-                <groupId>io.github.astrapi69</groupId>
-                <artifactId>message-mail-data</artifactId>
-                <version>${message-mail-data.version}</version>
-            </dependency>
-            ...
-        </dependencies>
-
-## gradle dependency
-
-You can first define the version in the ext section and add than the following gradle dependency to
-your project `build.gradle` if you want to import the core functionality of message-mail-data:
-
-define version in file gradle.properties
-
-```
-messageMailDataVersion=1
-```
-
-or in build.gradle ext area
-
-```
-ext {
-            ...
-    messageMailDataVersion = "1"
-            ...
-}
-```
-
-and than add the dependency to the dependencies area
-
-```
-dependencies {
-            ...
-    implementation("io.github.astrapi69:message-mail-data:$messageMailDataVersion")
-            ...
-}
-```
 
 ## Semantic Versioning
 
