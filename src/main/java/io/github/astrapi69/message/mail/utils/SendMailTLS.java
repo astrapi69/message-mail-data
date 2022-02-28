@@ -24,23 +24,24 @@
  */
 package io.github.astrapi69.message.mail.utils;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.Properties;
 
-import de.alpharogroup.crypto.chainable.ChainableStringDecryptor;
-import de.alpharogroup.crypto.chainable.ChainableStringEncryptor;
-import de.alpharogroup.crypto.core.ChainableDecryptor;
-import de.alpharogroup.crypto.hex.HexableDecryptor;
-import de.alpharogroup.crypto.hex.HexableEncryptor;
-import de.alpharogroup.file.read.ReadFileExtensions;
-import de.alpharogroup.file.search.PathFinder;
-import de.alpharogroup.file.write.WriteFileExtensions;
-import de.alpharogroup.lang.ClassExtensions;
+import io.github.astrapi69.crypto.chainable.ChainableStringDecryptor;
+import io.github.astrapi69.crypto.chainable.ChainableStringEncryptor;
+import io.github.astrapi69.crypto.core.ChainableDecryptor;
+import io.github.astrapi69.crypto.hex.HexableDecryptor;
+import io.github.astrapi69.crypto.hex.HexableEncryptor;
+import io.github.astrapi69.file.read.ReadFileExtensions;
+import io.github.astrapi69.file.search.PathFinder;
+import io.github.astrapi69.file.write.WriteFileExtensions;
+import io.github.astrapi69.lang.ClassExtensions;
 
 public class SendMailTLS
 {
 
-	private static String decryptPassword() throws Exception
+	protected static String decryptPassword() throws Exception
 	{
 		Properties prop = EmailSendProperties.getEmailSendProperties();
 		String firstKey = prop.getProperty("post.send.first.key");
@@ -71,10 +72,9 @@ public class SendMailTLS
 		final HexableEncryptor thirdEncryptor = new HexableEncryptor(thirdKey);
 		final ChainableStringEncryptor encryptor = new ChainableStringEncryptor(firstEncryptor,
 			secondEncryptor, thirdEncryptor);
-
-		WriteFileExtensions.writeStringToFile(
-			PathFinder.getRelativePath(PathFinder.getSrcMainResourcesDir(), "gmail.pw"),
-			encryptor.encrypt(pw), "UTF-8");
+		String encryptedPassword = encryptor.encrypt(pw);
+		File file = PathFinder.getRelativePath(PathFinder.getSrcTestResourcesDir(), filename);
+		WriteFileExtensions.writeStringToFile(file, encryptedPassword, "UTF-8");
 	}
 
 }
