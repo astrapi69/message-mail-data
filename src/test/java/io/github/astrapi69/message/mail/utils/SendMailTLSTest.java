@@ -1,22 +1,27 @@
 package io.github.astrapi69.message.mail.utils;
 
-import de.alpharogroup.email.messages.EmailConstants;
-import de.alpharogroup.email.messages.EmailMessage;
-import de.alpharogroup.email.send.SendEmail;
-import de.alpharogroup.email.utils.EmailExtensions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import io.github.astrapi69.email.messages.EmailConstants;
+import io.github.astrapi69.email.messages.EmailMessage;
+import io.github.astrapi69.email.send.SendEmail;
+import io.github.astrapi69.email.utils.EmailExtensions;
+
 class SendMailTLSTest
 {
-	@Test @Disabled void testEncryptPassword()throws Exception
+	@Test
+	@Disabled
+	void testEncryptPassword() throws Exception
 	{
 		String password;
 		password = "very-secret";
 		SendMailTLS.encryptPassword(password, "gmail.pw");
 	}
 
-	@Test @Disabled void testDecryptPassword() throws Exception
+	@Test
+	@Disabled
+	void testDecryptPassword() throws Exception
 	{
 		final String username = "error.flirteros@gmail.com";
 		String password;

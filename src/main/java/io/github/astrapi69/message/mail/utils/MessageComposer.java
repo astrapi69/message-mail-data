@@ -36,12 +36,12 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.runtime.parser.ParseException;
 
-import de.alpharogroup.file.read.ReadFileExtensions;
-import de.alpharogroup.lang.ClassExtensions;
-import de.alpharogroup.resourcebundle.locale.LocaleExtensions;
-import de.alpharogroup.velocity.VelocityExtensions;
-import de.alpharogroup.xml.XmlToObjectExtensions;
+import io.github.astrapi69.file.read.ReadFileExtensions;
+import io.github.astrapi69.lang.ClassExtensions;
 import io.github.astrapi69.message.mail.viewmodel.MessageContent;
+import io.github.astrapi69.resourcebundle.locale.LocaleExtensions;
+import io.github.astrapi69.velocity.VelocityExtensions;
+import io.github.astrapi69.xml.XmlToObjectExtensions;
 
 /**
  * The Class MessageComposer.

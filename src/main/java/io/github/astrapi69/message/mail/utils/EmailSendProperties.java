@@ -29,8 +29,8 @@ import java.util.Properties;
 
 import javax.mail.PasswordAuthentication;
 
-import de.alpharogroup.email.send.SendEmail;
-import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
+import io.github.astrapi69.email.send.SendEmail;
+import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
 
 public final class EmailSendProperties
 {

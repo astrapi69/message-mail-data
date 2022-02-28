@@ -28,14 +28,14 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import de.alpharogroup.xml.ObjectToXmlExtensions;
-import de.alpharogroup.xml.XmlToObjectExtensions;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import io.github.astrapi69.xml.ObjectToXmlExtensions;
+import io.github.astrapi69.xml.XmlToObjectExtensions;
 
 @Data
 @NoArgsConstructor

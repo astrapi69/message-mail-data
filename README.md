@@ -1,6 +1,6 @@
 # Overview
 
-<div align="center">
+<div style="text-align: center">
 
 [![Build Status](https://travis-ci.com/astrapi69/message-mail-data.svg?branch=master)](https://travis-ci.com/astrapi69/message-mail-data)
 [![Coverage Status](https://codecov.io/gh/astrapi69/message-mail-data/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/message-mail-data)
@@ -56,23 +56,23 @@ functionality of message-mail-data:
 
 Than you can add the dependency to your dependencies:
 
-	<properties>
-			...
-		<!-- message-mail-data version -->
-		<message-mail-data.version>1</message-mail-data.version>
-			...
-	</properties>
-			...
-		<dependencies>
-			...
-			<!-- message-mail-data DEPENDENCY -->
-			<dependency>
-				<groupId>io.github.astrapi69</groupId>
-				<artifactId>message-mail-data</artifactId>
-				<version>${message-mail-data.version}</version>
-			</dependency>
-			...
-		</dependencies>
+    <properties>
+            ...
+        <!-- message-mail-data version -->
+        <message-mail-data.version>1</message-mail-data.version>
+            ...
+    </properties>
+            ...
+        <dependencies>
+            ...
+            <!-- message-mail-data DEPENDENCY -->
+            <dependency>
+                <groupId>io.github.astrapi69</groupId>
+                <artifactId>message-mail-data</artifactId>
+                <version>${message-mail-data.version}</version>
+            </dependency>
+            ...
+        </dependencies>
 
 ## gradle dependency
 
@@ -89,9 +89,9 @@ or in build.gradle ext area
 
 ```
 ext {
-			...
+            ...
     messageMailDataVersion = "1"
-			...
+            ...
 }
 ```
 
@@ -99,9 +99,9 @@ and than add the dependency to the dependencies area
 
 ```
 dependencies {
-			...
+            ...
     implementation("io.github.astrapi69:message-mail-data:$messageMailDataVersion")
-			...
+            ...
 }
 ```
 
@@ -140,4 +140,3 @@ bug reports, or feature requests.
 ## Similar projects
 
 ## Credits
-
