@@ -5,7 +5,7 @@
 [![Java CI with Gradle](https://github.com/astrapi69/message-mail-data/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/message-mail-data/actions/workflows/gradle.yml)
 [![Coverage Status](https://codecov.io/gh/astrapi69/message-mail-data/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/message-mail-data)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/message-mail-data.svg?style=flat)](https://github.com/astrapi69/message-mail-data/issues)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/message-mail-data/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/message-mail-data)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.astrapi69/message-mail-data.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.astrapi69/message-mail-data)
 [![Javadocs](http://www.javadoc.io/badge/io.github.astrapi69/message-mail-data.svg)](http://www.javadoc.io/doc/io.github.astrapi69/message-mail-data)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](http://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/donate-❤-ff2244.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GVBTWLRAZ7HB8)
@@ -14,7 +14,11 @@
 
 </div>
 
-This project holds pojo classes for messages and email messages
+This project holds pojo classes for messages and email messages, composes localized mails from
+XML templates with Velocity, and sends them through email-tails on Jakarta Mail 2.1.
+
+Version 2 requires Java 25 or newer and replaces javax.mail with jakarta.mail; a project still on
+javax.mail stays on version 1.1.
 
 > Please support this project by simply putting a Github <!-- Place this tag where you want the button to render. -->
 <a class="github-button" href="https://github.com/astrapi69/message-mail-data" data-icon="octicon-star" aria-label="Star astrapi69/message-mail-data on GitHub">Star ⭐</a>
@@ -30,9 +34,12 @@ No animals were harmed in the making of this library.
 
 ## Maven dependency
 
-Maven dependency is now on sonatype. Check
-out [sonatype repository](https://oss.sonatype.org/index.html#nexus-search;gav~io.github.astrapi69~message-mail-data~~~)
-for latest snapshots and releases.
+Maven dependency is now on Maven Central. Check out
+[Maven Central](https://central.sonatype.com/artifact/io.github.astrapi69/message-mail-data) for the
+latest releases, and the
+[Central Portal snapshots](https://central.sonatype.com/repository/maven-snapshots/) for snapshots.
+Replace the variable ${latestVersion} with the current latest version:
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.astrapi69/message-mail-data.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.astrapi69/message-mail-data)
 
 Add the following maven dependency to your project `pom.xml` if you want to import the core
 functionality of message-mail-data:
@@ -42,7 +49,7 @@ Than you can add the dependency to your dependencies:
     <properties>
             ...
         <!-- message-mail-data version -->
-        <message-mail-data.version>1.1</message-mail-data.version>
+        <message-mail-data.version>${latestVersion}</message-mail-data.version>
             ...
     </properties>
             ...
@@ -65,13 +72,13 @@ your project `build.gradle` if you want to import the core functionality of mess
 define version in file gradle.properties
 
 ```
-messageMailDataVersion=1.1
+messageMailDataVersion=${latestVersion}
 ```
 
 or in build.gradle ext area
 
 ```
-    messageMailDataVersion = "1.1"
+    messageMailDataVersion = "${latestVersion}"
 ```
 
 and than add the dependency to the dependencies area
@@ -79,6 +86,44 @@ and than add the dependency to the dependencies area
 ```
     implementation("io.github.astrapi69:message-mail-data:$messageMailDataVersion")
 ```
+
+or, with a version catalog, in gradle/libs.versions.toml
+
+```
+[versions]
+message-mail-data-version = "${latestVersion}"
+
+[libraries]
+message-mail-data = { module = "io.github.astrapi69:message-mail-data", version.ref = "message-mail-data-version" }
+```
+
+## Development
+
+The build is Gradle 9 with a version catalog in `gradle/libs.versions.toml`; the build logic sits in
+`gradle/*.gradle`, listed in `gradle/gradle-files.list`. `make help` lists the make targets that wrap
+the everyday Gradle calls.
+
+```
+./gradlew build            # compile, test, jacoco, spotless check, API compatibility against the last release
+./gradlew spotlessApply    # format, order imports, add the MIT header
+./gradlew pitest           # mutation testing; the floor stands in build.gradle
+./gradlew dependencyUpdates versionCatalogUpdate --interactive   # see and stage dependency updates
+```
+
+While email-tails 7 is a snapshot, build against a locally published one with
+`./gradlew build -PuseMavenLocal`; without the flag the build resolves it from the Central Portal
+snapshot repository.
+
+Install the commit hook once after cloning; it refuses a commit that credits a non-human
+collaborator, the same rule the commit-provenance workflow enforces on pull requests:
+
+```
+git config core.hooksPath .githooks
+```
+
+Releasing is a manual step: push a `RELEASE-*` tag (`./gradlew tagRelease`), and the publish
+workflow uploads the signed artifacts to the Central Portal. A push to develop publishes a
+snapshot. Security reports go through [SECURITY.md](SECURITY.md), not the issue tracker.
 
 # Donations
 

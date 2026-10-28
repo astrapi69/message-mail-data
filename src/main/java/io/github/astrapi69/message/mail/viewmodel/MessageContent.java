@@ -28,14 +28,14 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import io.github.astrapi69.xstream.ObjectToXmlExtensions;
+import io.github.astrapi69.xstream.XmlToObjectExtensions;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import io.github.astrapi69.xml.ObjectToXmlExtensions;
-import io.github.astrapi69.xml.XmlToObjectExtensions;
 
 @Data
 @NoArgsConstructor
@@ -52,13 +52,13 @@ public class MessageContent
 	{
 		Map<String, Class<?>> aliases = new HashMap<>();
 		aliases.put("message", MessageContent.class);
-		return XmlToObjectExtensions.toObjectWithXStream(xml, aliases);
+		return XmlToObjectExtensions.toObject(xml, aliases);
 	}
 
 	public String toXml()
 	{
 		Map<String, Class<?>> aliases = new HashMap<>();
 		aliases.put("message", MessageContent.class);
-		return ObjectToXmlExtensions.toXmlWithXStream(this, aliases);
+		return ObjectToXmlExtensions.toXml(this, aliases);
 	}
 }

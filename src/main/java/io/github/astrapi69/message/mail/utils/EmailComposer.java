@@ -31,12 +31,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Level;
 
-import lombok.extern.java.Log;
-
 import org.apache.velocity.runtime.parser.ParseException;
 
 import io.github.astrapi69.message.mail.viewmodel.InfoMessage;
 import io.github.astrapi69.message.mail.viewmodel.MessageContent;
+import lombok.extern.java.Log;
 
 /**
  * The Class MessageComposer.

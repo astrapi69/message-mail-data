@@ -27,10 +27,9 @@ package io.github.astrapi69.message.mail.utils;
 import java.io.IOException;
 import java.util.Properties;
 
-import javax.mail.PasswordAuthentication;
-
 import io.github.astrapi69.email.send.SendEmail;
 import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
+import jakarta.mail.PasswordAuthentication;
 
 public final class EmailSendProperties
 {
@@ -55,7 +54,7 @@ public final class EmailSendProperties
 	{
 		Properties properties = EmailSendProperties.getGmailProperties();
 
-		SendEmail sender = new SendEmail(properties, new javax.mail.Authenticator()
+		SendEmail sender = new SendEmail(properties, new jakarta.mail.Authenticator()
 		{
 			protected PasswordAuthentication getPasswordAuthentication()
 			{

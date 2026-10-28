@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -41,7 +42,7 @@ import io.github.astrapi69.lang.ClassExtensions;
 import io.github.astrapi69.message.mail.viewmodel.MessageContent;
 import io.github.astrapi69.resourcebundle.locale.LocaleExtensions;
 import io.github.astrapi69.velocity.VelocityExtensions;
-import io.github.astrapi69.xml.XmlToObjectExtensions;
+import io.github.astrapi69.xstream.XmlToObjectExtensions;
 
 /**
  * The Class MessageComposer.
@@ -103,9 +104,8 @@ public class MessageComposer
 		InputStream is = ClassExtensions.getResourceAsStream(name);
 		Map<String, Class<?>> aliases = new HashMap<>();
 		aliases.put("message", MessageContent.class);
-		String xmlString = ReadFileExtensions.inputStream2String(is);
-		MessageContent messageContent = XmlToObjectExtensions.toObjectWithXStream(xmlString,
-			aliases);
+		String xmlString = new String(ReadFileExtensions.toByteArray(is), StandardCharsets.UTF_8);
+		MessageContent messageContent = XmlToObjectExtensions.toObject(xmlString, aliases);
 		return messageContent;
 	}
 

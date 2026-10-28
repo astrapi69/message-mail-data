@@ -1,0 +1,32 @@
+dependencies {
+
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testCompileOnly libs.lombok
+    testAnnotationProcessor libs.lombok
+
+    // email-tails types stand in this library's public signatures (EmailSendProperties returns a
+    // SendEmail), and so does velocity's ParseException (MessageComposer.createMessageModel declares
+    // it): a consumer compiles against both, so they are api, not implementation. email-tails
+    // brings jakarta.mail-api and the Angus runtime with it.
+    api libs.email.tails
+    api libs.velocity
+    // used directly: Authenticator and PasswordAuthentication in EmailSendProperties
+    implementation libs.jakarta.mail.api
+
+    implementation libs.file.worker
+    implementation libs.jobj.core
+    implementation libs.mystic.crypt
+    implementation libs.resourcebundle.core
+    implementation libs.velocity.extensions
+    implementation libs.xstream.extensions
+    // xstream-extensions 1.1 takes an XStream in the overloads of toObject and toXml but declares
+    // xstream as a runtime dependency, so javac cannot resolve the overload without the class on
+    // the compile classpath (astrapi69/xstream-extensions#6: xstream belongs in api
+    // there). Declared here until that is fixed; 1.4.21 also closes the advisories open against the
+    // 1.4.19 it would otherwise pull
+    implementation libs.xstream
+
+    testImplementation libs.bundles.unit.testing
+    testRuntimeOnly libs.junit.platform.launcher
+}

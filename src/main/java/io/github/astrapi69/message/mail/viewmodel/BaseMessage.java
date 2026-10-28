@@ -24,6 +24,8 @@
  */
 package io.github.astrapi69.message.mail.viewmodel;
 
+import io.github.astrapi69.message.mail.enums.MessageState;
+import io.github.astrapi69.message.mail.enums.MessageType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,8 +34,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
-import io.github.astrapi69.message.mail.enums.MessageState;
-import io.github.astrapi69.message.mail.enums.MessageType;
 
 @Data
 @ToString(callSuper = true)

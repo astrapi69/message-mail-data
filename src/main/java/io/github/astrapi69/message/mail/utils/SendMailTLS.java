@@ -26,17 +26,18 @@ package io.github.astrapi69.message.mail.utils;
 
 import java.io.File;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
-import io.github.astrapi69.crypto.chainable.ChainableStringDecryptor;
-import io.github.astrapi69.crypto.chainable.ChainableStringEncryptor;
-import io.github.astrapi69.crypto.core.ChainableDecryptor;
-import io.github.astrapi69.crypto.hex.HexableDecryptor;
-import io.github.astrapi69.crypto.hex.HexableEncryptor;
 import io.github.astrapi69.file.read.ReadFileExtensions;
 import io.github.astrapi69.file.search.PathFinder;
-import io.github.astrapi69.file.write.WriteFileExtensions;
+import io.github.astrapi69.file.write.StoreFileExtensions;
 import io.github.astrapi69.lang.ClassExtensions;
+import io.github.astrapi69.mystic.crypt.chainable.ChainableStringDecryptor;
+import io.github.astrapi69.mystic.crypt.chainable.ChainableStringEncryptor;
+import io.github.astrapi69.mystic.crypt.core.ChainableDecryptor;
+import io.github.astrapi69.mystic.crypt.hex.HexableDecryptor;
+import io.github.astrapi69.mystic.crypt.hex.HexableEncryptor;
 
 public class SendMailTLS
 {
@@ -49,7 +50,7 @@ public class SendMailTLS
 		String thirdKey = prop.getProperty("post.send.third.key");
 
 		InputStream is = ClassExtensions.getResourceAsStream("gmail.pw");
-		String encrypted = ReadFileExtensions.inputStream2String(is);
+		String encrypted = new String(ReadFileExtensions.toByteArray(is), StandardCharsets.UTF_8);
 
 		HexableDecryptor firstDecryptor = new HexableDecryptor(firstKey);
 		HexableDecryptor secondDecryptor = new HexableDecryptor(secondKey);
@@ -74,7 +75,7 @@ public class SendMailTLS
 			secondEncryptor, thirdEncryptor);
 		String encryptedPassword = encryptor.encrypt(pw);
 		File file = PathFinder.getRelativePath(PathFinder.getSrcTestResourcesDir(), filename);
-		WriteFileExtensions.writeStringToFile(file, encryptedPassword, "UTF-8");
+		StoreFileExtensions.toFile(file, encryptedPassword, "UTF-8");
 	}
 
 }
