@@ -1,5 +1,5 @@
 [versions]
-email-tails-version = "7-SNAPSHOT"
+email-tails-version = "7"
 file-worker-version = "19.1"
 gradle-plugin-lombok-version = "9.8.2"
 gradle-plugin-nmcp-version = "1.6.2"

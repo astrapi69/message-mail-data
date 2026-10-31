@@ -110,10 +110,6 @@ the everyday Gradle calls.
 ./gradlew dependencyUpdates versionCatalogUpdate --interactive   # see and stage dependency updates
 ```
 
-While email-tails 7 is a snapshot, build against a locally published one with
-`./gradlew build -PuseMavenLocal`; without the flag the build resolves it from the Central Portal
-snapshot repository.
-
 Install the commit hook once after cloning; it refuses a commit that credits a non-human
 collaborator, the same rule the commit-provenance workflow enforces on pull requests:
 
