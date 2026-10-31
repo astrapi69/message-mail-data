@@ -35,7 +35,7 @@ ADDED:
 CHANGED:
 
 - update gradle to version 9.7.0
-- update of email-tails to 7, file-worker to 19.1, jobj-core to 9.1, resourcebundle-core to 6.1,
+- update of email-tails to 7 (released 2026-10-31), file-worker to 19.1, jobj-core to 9.1, resourcebundle-core to 6.1,
   lombok to 1.18.48, junit-jupiter to 6.1.3; xstream is lifted to 1.4.21
 - email-tails and velocity are api dependencies, since this library's public signatures name
   their types; jakarta.mail-api is declared because EmailSendProperties uses it directly

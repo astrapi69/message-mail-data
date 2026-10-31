@@ -16,7 +16,7 @@ help:
 	@echo "message-mail-data - make targets"
 	@echo ""
 	@echo "  build                   clean build: tests + Jacoco + Spotless check + API compatibility (the everyday gate)"
-	@echo "  build-local             the same against a locally published email-tails snapshot (-PuseMavenLocal)"
+	@echo "  build-local             the same against locally published dependencies (-PuseMavenLocal)"
 	@echo "  build-fast              assemble without running tests"
 	@echo "  test                    tests only"
 	@echo "  clean                   remove build output"
@@ -48,8 +48,8 @@ help:
 build:
 	$(GRADLE) clean build
 
-# while email-tails 7 is a snapshot: publish it locally there (make publish-local), then build here
-# against it; without the flag the build resolves it from the Central Portal snapshot repository
+# against dependencies published to the local Maven repository (make publish-local in their checkouts),
+# for checking this consumer against a candidate before it is on Central
 build-local:
 	$(GRADLE) clean build -PuseMavenLocal
 
