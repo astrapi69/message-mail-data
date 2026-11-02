@@ -1,0 +1,4 @@
+<message>
+  <subject>$memberUsername recommends a profile on $applicationDomainName</subject>
+  <content>$invitationText $profileData $profileLink, from $senderProfileLink; sign up at $signupLink</content>
+</message>
