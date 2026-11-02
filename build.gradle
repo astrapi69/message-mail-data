@@ -28,13 +28,14 @@ description = "$rootProject.name"
 apply from: "gradle/apply-gradle-files.gradle"
 
 // Mutation-score floor the CI build fails below: .github/workflows/gradle.yml
-// runs `./gradlew pitest` after the build. Measured 0 % (0 of 17 mutants killed)
-// on 2026-10-28: the only test class, SendMailTLSTest, is @Disabled because it
-// sends through a real Gmail account. The floor is 0 until tests exist; raise it
-// with every test that lands. Kept here, not in gradle/mutation-testing.gradle,
-// so that the floor sits in the file a reader looks at.
+// runs `./gradlew pitest` after the build. Measured 100 % (18 of 18 mutants killed)
+// on 2026-11-02, once GreenMail tests replaced SendMailTLSTest, which needed a real
+// Gmail account (#11). 94 lets one mutant survive at this size, as PIT rounds the
+// score half up to a whole percent before it compares (17 of 18 is 94). Kept here,
+// not in gradle/mutation-testing.gradle, so that the floor sits in the file a
+// reader looks at.
 pitest {
-    mutationThreshold = 0
+    mutationThreshold = 94
 }
 
 java {

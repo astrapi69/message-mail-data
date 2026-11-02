@@ -1,0 +1,4 @@
+<message>
+  <subject>$memberUsername answered you on $applicationDomainName</subject>
+  <content>Dear $recipientFullName, $memberUsername writes: $messagePart</content>
+</message>

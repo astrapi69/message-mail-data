@@ -16,7 +16,6 @@ dependencies {
 
     implementation libs.file.worker
     implementation libs.jobj.core
-    implementation libs.mystic.crypt
     implementation libs.resourcebundle.core
     implementation libs.velocity.extensions
     implementation libs.xstream.extensions
@@ -28,5 +27,8 @@ dependencies {
     implementation libs.xstream
 
     testImplementation libs.bundles.unit.testing
+    // an SMTP server inside the test JVM, so that the tests send without a network and without an
+    // account (#11)
+    testImplementation libs.greenmail.junit5
     testRuntimeOnly libs.junit.platform.launcher
 }
