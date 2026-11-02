@@ -24,13 +24,11 @@
  */
 package io.github.astrapi69.message.mail.utils;
 
-import java.io.IOException;
 import java.util.Properties;
 
 import io.github.astrapi69.email.properties.PropertyKeys;
 import io.github.astrapi69.email.send.SendEmail;
 import io.github.astrapi69.message.mail.viewmodel.EmailConfiguration;
-import io.github.astrapi69.resourcebundle.properties.PropertiesFileExtensions;
 import jakarta.mail.Authenticator;
 import jakarta.mail.PasswordAuthentication;
 
@@ -46,12 +44,6 @@ public final class EmailSendProperties
 
 	/** The submission port of Gmail's SMTP server, with STARTTLS */
 	private static final int GMAIL_PORT = 587;
-
-	public static Properties getEmailSendProperties() throws IOException
-	{
-		Properties properties = PropertiesFileExtensions.loadProperties("emailsender.properties");
-		return properties;
-	}
 
 	/**
 	 * The session properties for Gmail's SMTP server

@@ -1,7 +1,7 @@
 # Security Policy
 
-`message-mail-data` composes mails from templates and sends them through email-tails, and its
-SendMailTLS helper decrypts a stored mail password. A defect here can deliver a message to the
+`message-mail-data` composes mails from templates and sends them through email-tails, logging in
+to the SMTP server with the account it is given. A defect here can deliver a message to the
 wrong recipient, render untrusted text into a template or expose a credential, so the reporting
 path below is deliberately not the public issue tracker.
 
@@ -51,13 +51,11 @@ promised instead:
 ### What belongs elsewhere
 
 Template rendering comes from Apache Velocity, XML binding from XStream, mail transport from
-Jakarta Mail and Eclipse Angus through email-tails, and the encryption of the stored password
-from mystic-crypt. A flaw inside one of them belongs there:
+Jakarta Mail and Eclipse Angus through email-tails. A flaw inside one of them belongs there:
 
 - Apache Velocity: <https://www.apache.org/security/>
 - XStream: <https://x-stream.github.io/security.html>
 - email-tails: <https://github.com/lightblueseas/email-tails/security/policy>
-- mystic-crypt: <https://github.com/astrapi69/mystic-crypt/security/policy>
 
 A flaw in *how this library uses* them - a template merged with unescaped user input, an XML
 alias that lets an unexpected class in, a key read from the wrong place - is squarely in scope

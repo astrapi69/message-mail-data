@@ -16,7 +16,6 @@ dependencies {
 
     implementation libs.file.worker
     implementation libs.jobj.core
-    implementation libs.mystic.crypt
     implementation libs.resourcebundle.core
     implementation libs.velocity.extensions
     implementation libs.xstream.extensions
