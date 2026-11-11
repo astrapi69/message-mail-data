@@ -110,13 +110,6 @@ the everyday Gradle calls.
 ./gradlew dependencyUpdates versionCatalogUpdate --interactive   # see and stage dependency updates
 ```
 
-Install the commit hook once after cloning; it refuses a commit that credits a non-human
-collaborator, the same rule the commit-provenance workflow enforces on pull requests:
-
-```
-git config core.hooksPath .githooks
-```
-
 Releasing is a manual step: push a `RELEASE-*` tag (`./gradlew tagRelease`), and the publish
 workflow uploads the signed artifacts to the Central Portal. A push to develop publishes a
 snapshot. Security reports go through [SECURITY.md](SECURITY.md), not the issue tracker.

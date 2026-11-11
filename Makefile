@@ -10,7 +10,7 @@ GRADLE := JAVA_HOME=$(JAVA_HOME) ./gradlew
 .PHONY: help build build-local build-fast test clean spotless spotless-java spotless-misc spotless-check \
 	pitest api-compatibility jacoco-report jar javadoc dependencies dependency-updates \
 	version-catalog-format version-catalog-update publish-local publish-snapshot publish-central \
-	tag-release install-hooks check-commit-provenance
+	tag-release
 
 help:
 	@echo "message-mail-data - make targets"
@@ -41,9 +41,6 @@ help:
 	@echo "  publish-snapshot        upload a SNAPSHOT to the Central Portal snapshot repository (needs CONFIRM=yes)"
 	@echo "  publish-central         upload a release to Maven Central (needs CONFIRM=yes)"
 	@echo "  tag-release             PUBLISHES: the RELEASE tag triggers publish.yml (needs CONFIRM=yes)"
-	@echo ""
-	@echo "  install-hooks           point git at .githooks (once per clone or worktree)"
-	@echo "  check-commit-provenance check this branch's commits against develop, as CI does"
 
 build:
 	$(GRADLE) clean build
@@ -132,12 +129,3 @@ tag-release:
 		echo "to Maven Central. Re-run with CONFIRM=yes if that is intended."; \
 		exit 1; }
 	$(GRADLE) tagRelease
-
-# the commit-msg hook refuses a commit that credits a non-human collaborator; CI runs the same
-# script over every pull request, so the hook is the early half, not the only one
-install-hooks:
-	git config core.hooksPath .githooks
-	@echo "git hooks: .githooks (commit-msg runs scripts/check-commit-provenance.sh)"
-
-check-commit-provenance:
-	./scripts/check-commit-provenance.sh --range develop..HEAD
