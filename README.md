@@ -172,12 +172,6 @@ or over Monero(XMR) with:
 <img src="https://github.com/astrapi69/jgeohash/blob/master/src/main/resources/img/49bqeRQ7Bf49oJFVC72pqpe5hFbb62pfXDYPdLsadGGF81KZW2ZfrPZ8PbAVu5X2v1TYAspeczMya3cYQysNS4usRRPQHVw.png"
 alt="Donation Monero Wallet" width="250"/>
 
-or over flattr:
-
-<a href="https://flattr.com/submit/auto?user_id=astrapi69&url=https://github.com/astrapi69/message-mail-data" target="_blank">
-<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" style="border: none" />
-</a>
-
 ## License
 
 The source code comes under the liberal MIT License, making message-mail-data great for all types of
